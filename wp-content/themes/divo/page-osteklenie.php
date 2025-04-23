@@ -5,7 +5,7 @@
 
 <?php get_header() ?>
 
-
+<div data-noindex>
 <?php get_template_part('template-parts/hero-block') ?>
 <?php get_template_part('template-parts/services') ?>
 <?php get_template_part('template-parts/works') ?>
@@ -22,8 +22,7 @@
 <?php get_template_part('template-parts/offer') ?>
 <?php get_template_part('template-parts/repeat-blocks/faq') ?>
 <?php get_template_part('template-parts/repeat-blocks/feedback') ?>
-
-
+</div>
 <div class="container">
     <?php the_content() ?>
 </div>
