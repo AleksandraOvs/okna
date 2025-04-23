@@ -1,3 +1,5 @@
+function initSwiper() {
+
 const swiperFeedback = new Swiper('.feedback-slider', {
   slidesPerView: 1, 
   loop: true,
@@ -20,4 +22,9 @@ const swiperFeedback = new Swiper('.feedback-slider', {
           spaceBetween: 40,
         }    
   }
+});
+}
+
+window.addEventListener('DOMContentLoaded', function() {
+  initSwiper();
 });

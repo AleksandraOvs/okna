@@ -1,3 +1,5 @@
+
+
 function getEndOfDayTimestamp() {
     const now = new Date();
     const end = new Date();
@@ -42,3 +44,4 @@ function getEndOfDayTimestamp() {
   // Обновляем каждую секунду
   setInterval(updateCountdown, 1000);
   updateCountdown();
+

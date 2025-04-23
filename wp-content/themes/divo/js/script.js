@@ -29,33 +29,39 @@ document.addEventListener('DOMContentLoaded', function () {
    // window.addEventListener("DOMContentLoaded", setDecoreFirstWord(".num-item__num"));
     //anim numbers
   
-  
-    if ($('#numbers').length) {
-      let isAnim = 0;
-      scrollTracking();
-      function scrollTracking() {
-        let wt = $(window).scrollTop();
-        let wh = $(window).height();
-        let et = $('.nums-list').offset().top + 50;
-        let eh = $('.nums-list').outerHeight();
-        let dh = $(document).height();
-        if (wt + wh >= et || wh + wt == dh || eh + et < wh) {
-          isAnim = 1;
-          $('.js-anim-numbers').addClass('_show')
-          $('.js-anim-numbers').delay(800).spincrement({
-            thousandSeparator: "",
-            duration: 3500
-          });
-        }
-      };
-      $(window).scroll(function () {
-        if (!isAnim) {
-          scrollTracking();
-        }
-      });
-    }
-
+   
     
   
 
 })
+
+function initNumbers() {
+  if ($('#numbers').length) {
+    let isAnim = 0;
+    scrollTracking();
+    function scrollTracking() {
+      let wt = $(window).scrollTop();
+      let wh = $(window).height();
+      let et = $('.nums-list').offset().top + 50;
+      let eh = $('.nums-list').outerHeight();
+      let dh = $(document).height();
+      if (wt + wh >= et || wh + wt == dh || eh + et < wh) {
+        isAnim = 1;
+        $('.js-anim-numbers').addClass('_show')
+        $('.js-anim-numbers').delay(800).spincrement({
+          thousandSeparator: "",
+          duration: 3500
+        });
+      }
+    };
+    $(window).scroll(function () {
+      if (!isAnim) {
+        scrollTracking();
+      }
+    });
+  }
+}
+
+window.addEventListener('DOMContentLoaded', function() {
+  initNumbers();
+});
