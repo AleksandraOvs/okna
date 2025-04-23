@@ -17,11 +17,14 @@
 
         echo '<div>' . $hero_desc . '</div>';
     }
+
+    get_template_part('template-parts/countdown');
     ?>
     <a href="/Marquiz.html" class="btn cta-btn">Рассчитать стоимость</a>
     <?php
     echo '</div></div>';
     ?>
+
 
 
 </section>

@@ -146,6 +146,7 @@ function divo_scripts() {
 
 	wp_deregister_script('jquery');
 	wp_enqueue_script('theme-jquery', get_template_directory_uri() . '/js/jquery.min.js', array(), null, true);
+	wp_enqueue_script('countdown', get_template_directory_uri() . '/js/countdown.js', array(), null, true);
 	wp_enqueue_script('spin_scripts', get_template_directory_uri() . '/js/jquery.spincrement.min.js', array(), null, true);
 	wp_enqueue_script( 'divo-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
 	wp_enqueue_script('fancy-scripts', get_stylesheet_directory_uri() . '/js/jquery.fancybox.min.js', array(), null, true);
