@@ -1,5 +1,5 @@
 <?php
-/*Template name: Остекление
+/*Template name: Остекление балконов
 */
 ?>
 

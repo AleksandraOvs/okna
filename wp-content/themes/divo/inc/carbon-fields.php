@@ -35,7 +35,7 @@ function osteklenie_fields()
 
         ));
 
-    Container::make('theme_options', 'Шаблон Остекление')
+    Container::make('theme_options', 'Шаблон Остекление Балконов')
 
         ->set_page_menu_position(3)
         ->set_icon('dashicons-admin-generic')
