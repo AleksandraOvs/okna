@@ -5,6 +5,7 @@
 
 <?php get_header() ?>
 
+
 <?php get_template_part('template-parts/hero-block') ?>
 <?php get_template_part('template-parts/services') ?>
 <?php get_template_part('template-parts/works') ?>
@@ -22,5 +23,9 @@
 <?php get_template_part('template-parts/repeat-blocks/faq') ?>
 <?php get_template_part('template-parts/repeat-blocks/feedback') ?>
 
-<?php the_content() ?>
+
+<div class="container">
+    <?php the_content() ?>
+</div>
+
 <?php get_footer() ?>
