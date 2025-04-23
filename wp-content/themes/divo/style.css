@@ -2397,6 +2397,10 @@ footer.site-footer .site-logo a img {
 	.hero-section__inner .container {
 		width: 100%;
 	}
+
+	section#numbers, .section-offer {
+		background-attachment: unset !important;
+	  }
 }
 
 #countdown {
