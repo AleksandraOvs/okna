@@ -56,13 +56,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     
-  const noIndexBlocks = document.querySelectorAll('[data-noindex]');
-  noIndexBlocks.forEach(block => {
-    const meta = document.createElement('meta');
-    meta.name = "robots";
-    meta.content = "noindex";
-    document.head.appendChild(meta);
-    //block.remove(); // или скрыть block.style.display = 'none';
-  });
+  
 
 })

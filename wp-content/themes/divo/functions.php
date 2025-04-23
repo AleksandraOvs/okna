@@ -152,6 +152,12 @@ function divo_scripts() {
 	wp_enqueue_script('swiper-scripts', get_stylesheet_directory_uri() . '/inc/swiper/swiper-bundle.min.js', array(), null, true);
 	wp_enqueue_script('slider-js', get_stylesheet_directory_uri() . '/inc/swiper/slider-scripts.js', array(), null, true);
 	wp_enqueue_script( 'divo-scripts', get_template_directory_uri() . '/js/script.js', array(), _S_VERSION, true );
+
+	wp_enqueue_script('ajax-block-loader', get_template_directory_uri() . '/js/ajax.js', [], null, true);
+
+wp_localize_script('ajax-block-loader', 'ajax_data', [
+  'url' => admin_url('admin-ajax.php')
+]);
 	wp_enqueue_script('js-accordion-ui', 'https://code.jquery.com/ui/1.12.1/jquery-ui.js', array(), null, true);
 	wp_enqueue_script('accordion-scripts', get_stylesheet_directory_uri() . '/js/accordion.js', array(), null, true);
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -222,3 +228,37 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 
 require 'inc/carbon-fields.php';
 require 'inc/logo.php';
+
+add_action('wp_ajax_load_template_block', 'ajax_load_template_block');
+add_action('wp_ajax_nopriv_load_template_block', 'ajax_load_template_block');
+
+function ajax_load_template_block() {
+    $block = isset($_POST['block']) ? sanitize_text_field($_POST['block']) : '';
+
+     // Белый список допустимых шаблонов
+	 $allowed_blocks = [
+        'hero-block',
+        'services',
+        'works',
+        'types',
+        'repeat-blocks/order',
+        'repeat-blocks/express',
+        'repeat-blocks/catalog',
+        'repeat-blocks/nums',
+        'repeat-blocks/pays',
+        'repeat-blocks/benefits',
+        'repeat-blocks/production',
+        'repeat-blocks/complect',
+        'repeat-blocks/delivery',
+        'offer',
+        'repeat-blocks/faq',
+        'repeat-blocks/feedback',
+    ];
+
+    if (in_array($block, $allowed_blocks)) {
+        get_template_part('template-parts/' . sanitize_file_name($block));
+    }
+
+    wp_die();
+}
+
