@@ -1,5 +1,5 @@
 <?php
-/*Template name: Template 1
+/*Template name: Остекление
 */
 ?>
 
@@ -22,4 +22,5 @@
 <?php get_template_part('template-parts/repeat-blocks/faq') ?>
 <?php get_template_part('template-parts/repeat-blocks/feedback') ?>
 
+<?php the_content() ?>
 <?php get_footer() ?>

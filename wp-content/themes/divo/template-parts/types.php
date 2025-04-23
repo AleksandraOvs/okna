@@ -1,11 +1,11 @@
 <?php
-if ($types_list = carbon_get_post_meta(get_the_ID(), 'crb_types_items')) {
+if ($types_list = carbon_get_theme_option('crb_types_items')) {
 ?>
     <section class="section-types">
         <div class="container">
             <div class="section-title">
                 <h2 class="title">
-                    <?php echo carbon_get_post_meta(get_the_ID(), 'crb_types_head') ?>
+                    <?php echo carbon_get_theme_option('crb_types_head') ?>
                 </h2>
             </div>
 

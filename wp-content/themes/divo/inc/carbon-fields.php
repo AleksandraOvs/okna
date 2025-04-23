@@ -3,8 +3,8 @@
 use Carbon_Fields\Container;
 use Carbon_Fields\Field;
 
-add_action('carbon_fields_register_fields', 'site_carbon');
-function site_carbon()
+add_action('carbon_fields_register_fields', 'osteklenie_fields');
+function osteklenie_fields()
 {
 
     Container::make('theme_options', 'Общие настройки')
@@ -35,10 +35,64 @@ function site_carbon()
 
         ));
 
-    Container::make('theme_options', 'Повторяющиеся блоки')
+    Container::make('theme_options', 'Шаблон Остекление')
 
         ->set_page_menu_position(3)
         ->set_icon('dashicons-admin-generic')
+
+        ->add_tab(__('HERO'), array(
+            Field::make('image', 'crb_hero_image', 'Изображение первого экрана')
+                ->set_width(33),
+            Field::make('text', 'crb_hero_heading', 'Заголовок')
+                ->set_width(33),
+            Field::make('text', 'crb_hero_description', 'подзаголовок')
+                ->set_width(33),
+        ))
+
+        ->add_tab(__('Блок услуг'), array(
+            Field::make('text', 'crb_services_head', 'Заголовок')
+                ->set_width(50),
+            Field::make('rich_text', 'crb_services_desc', 'Описание')
+                ->set_width(50),
+            Field::make('complex', 'crb_services_items', 'Список услуг')
+                ->add_fields(array(
+                    Field::make('image', 'crb_service_img', 'Изображение услуги')
+                        ->set_width(30),
+                    Field::make('text', 'crb_service_head', 'Название услуги')
+                        ->set_width(30),
+                    Field::make('rich_text', 'crb_service_desc', 'Описание')
+                        ->set_width(30),
+                )),
+        ))
+
+        ->add_tab(__('Наши работы'), array(
+            Field::make('text', 'crb_works_head', 'Заголовок')
+                ->set_width(50),
+            Field::make('text', 'crb_works_desc', 'Описание')
+                ->set_width(50),
+            Field::make('complex', 'crb_works_items', 'Фото работ')
+                ->add_fields(array(
+                    Field::make('image', 'crb_work_img', 'Изображение услуги')
+                        ->set_width(33),
+                )),
+        ))
+
+        ->add_tab(__('Виды'), array(
+            Field::make('text', 'crb_types_head', 'Заголовок')
+                ->set_width(50),
+
+            Field::make('complex', 'crb_types_items', 'Фото типов')
+                ->add_fields(array(
+                    Field::make('image', 'crb_type_img', 'Изображение типа')
+                        ->set_width(33),
+                    Field::make('text', 'crb_type_head', 'Название')
+                        ->set_width(33),
+                    Field::make('text', 'crb_type_desc', 'Описание')
+                        ->set_width(33),
+                )),
+        ))
+
+
         ->add_tab(__('Как сделать заказ'), array(
             Field::make('complex', 'crb_order_list', 'Этапы заказа')
                 ->add_fields(array(
@@ -71,7 +125,6 @@ function site_carbon()
             Field::make('rich_text', 'crb_production_text', 'Текст')
                 ->set_width(50),
             Field::make('complex', 'crb_catalog', 'Каталог')
-                ->set_max(3)
                 ->add_fields(array(
                     Field::make('image', 'crb_catalog_img', 'Изображение')
                         ->set_width(33),
@@ -96,8 +149,10 @@ function site_carbon()
                     Field::make('text', 'crb_num_word', 'Слово')
                         ->set_width(33),
                     Field::make('rich_text', 'crb_num_desc', 'Описание')
-                        ->set_width(33),
-                ))
+                        ->set_width(33.),
+                )),
+            Field::make('image', 'crb_nums_bg', 'Изображение')
+                ->set_width(33),
         ))
 
         ->add_tab(__('Рассрочка'), array(
@@ -145,6 +200,19 @@ function site_carbon()
                 )),
         ))
 
+
+        ->add_tab(__('Специальное предложение'), array(
+
+            Field::make('text', 'crb_offer', 'Заголовок')
+                ->set_width(50),
+
+            Field::make('rich_text', 'crb_offer_text', 'Текст')
+                ->set_width(50),
+
+            Field::make('image', 'crb_offer_bg', 'Изображение')
+                ->set_width(50),
+        ))
+
         ->add_tab(__('FAQ'), array(
 
             Field::make('text', 'crb_faq_head', 'Заголовок')
@@ -165,87 +233,13 @@ function site_carbon()
             Field::make('complex', 'crb_feedback_list', 'Отзывы')
                 ->add_fields(array(
                     Field::make('image', 'crb_feedback_img', 'Фото')
-                        ->set_width(33),
+                        ->set_width(20),
                     Field::make('text', 'crb_feedback_name', 'Имя')
                         ->set_width(20),
                     Field::make('rich_text', 'crb_feedback_text', 'Текст отзыва')
-                        ->set_width(20),
+                        ->set_width(60),
                 )),
         ));
 
 
-
-    Container::make('post_meta', 'Контент страницы')
-        //->show_on_post_type('page')
-        ->add_tab(__('HERO'), array(
-            Field::make('image', 'crb_hero_image', 'Изображение первого экрана')
-                ->set_width(33),
-            Field::make('text', 'crb_hero_heading', 'Заголовок')
-                ->set_width(33),
-            Field::make('text', 'crb_hero_description', 'подзаголовок')
-                ->set_width(33),
-
-        ))
-
-        ->add_tab(__('Блок услуг'), array(
-            Field::make('text', 'crb_services_head', 'Заголовок')
-                ->set_width(50),
-            Field::make('rich_text', 'crb_services_desc', 'Описание')
-                ->set_width(50),
-            Field::make('complex', 'crb_services_items', 'Список услуг')
-                ->add_fields(array(
-                    Field::make('image', 'crb_service_img', 'Изображение услуги')
-                        ->set_width(30),
-                    Field::make('text', 'crb_service_head', 'Название услуги')
-                        ->set_width(30),
-                    Field::make('rich_text', 'crb_service_desc', 'Описание')
-                        ->set_width(30),
-                )),
-        ))
-
-        ->add_tab(__('Наши работы'), array(
-            Field::make('text', 'crb_works_head', 'Заголовок')
-                ->set_width(50),
-            Field::make('text', 'crb_works_desc', 'Описание')
-                ->set_width(50),
-            Field::make('complex', 'crb_works_items', 'Фото работ')
-                ->add_fields(array(
-                    Field::make('image', 'crb_work_img', 'Изображение услуги')
-                        ->set_width(33),
-
-                )),
-        ))
-
-        ->add_tab(__('Виды'), array(
-            Field::make('text', 'crb_types_head', 'Заголовок')
-                ->set_width(50),
-
-            Field::make('complex', 'crb_types_items', 'Фото типов')
-                ->add_fields(array(
-                    Field::make('image', 'crb_type_img', 'Изображение типа')
-                        ->set_width(33),
-                    Field::make('text', 'crb_type_head', 'Название')
-                        ->set_width(33),
-                    Field::make('text', 'crb_type_desc', 'Описание')
-                        ->set_width(33),
-                )),
-        ))
-
-        ->add_tab(__('Специальное предложение'), array(
-
-            Field::make('text', 'crb_offer', 'Заголовок')
-                ->set_width(50),
-
-            Field::make('rich_text', 'crb_offer_text', 'Текст')
-                ->set_width(50),
-
-            Field::make('image', 'crb_offer_bg', 'Изображение')
-                ->set_width(50),
-        ))
-
-        ->add_tab(__('Фон для блока с цифрами'), array(
-
-            Field::make('image', 'crb_nums_bg', 'Изображение')
-                ->set_width(50),
-        ));
 }

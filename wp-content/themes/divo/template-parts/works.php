@@ -1,14 +1,14 @@
 <?php
-if ($works_list = carbon_get_post_meta(get_the_ID(), 'crb_works_items')) {
+if ($works_list = carbon_get_theme_option('crb_works_items')) {
 ?>
     <section class="section-services">
         <div class="container">
             <div class="section-title">
                 <h2 class="title">
-                    <?php echo carbon_get_post_meta(get_the_ID(), 'crb_works_head') ?>
+                    <?php echo carbon_get_theme_option('crb_works_head') ?>
                 </h2>
                 <div class="description">
-                    <?php echo carbon_get_post_meta(get_the_ID(), 'crb_works_desc') ?>
+                    <?php echo carbon_get_theme_option('crb_works_desc') ?>
                 </div>
             </div>
 

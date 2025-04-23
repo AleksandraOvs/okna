@@ -1,14 +1,14 @@
 <?php
-if ($services_list = carbon_get_post_meta(get_the_ID(), 'crb_services_items')) {
+if ($services_list = carbon_get_theme_option('crb_services_items')) {
 ?>
     <section class="section-services">
         <div class="container">
             <div class="section-title">
                 <h2 class="title">
-                    <?php echo carbon_get_post_meta(get_the_ID(), 'crb_services_head') ?>
+                    <?php echo carbon_get_theme_option('crb_services_head') ?>
                 </h2>
                 <div class="description">
-                    <?php echo carbon_get_post_meta(get_the_ID(), 'crb_services_desc') ?>
+                    <?php echo carbon_get_theme_option('crb_services_desc') ?>
                 </div>
             </div>
 
@@ -19,7 +19,7 @@ if ($services_list = carbon_get_post_meta(get_the_ID(), 'crb_services_items')) {
                     $service_img_url = wp_get_attachment_image_url($services_img, 'crb_service_img');
                     ?>
                     <li class="services-list__item">
-                        <img src="<?php echo $service_img_url ?>" alt="<?php echo carbon_get_post_meta(get_the_ID(), 'crb_services_head') ?>">
+                        <img src="<?php echo $service_img_url ?>" alt="<?php echo carbon_get_theme_option('crb_services_head') ?>">
 
                         <h3> <?php echo $services_item['crb_service_head'] ?> </h3>
 

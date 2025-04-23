@@ -3,7 +3,7 @@ if ($nums = carbon_get_theme_option('crb_nums_list')) {
 ?>
 
 <?php
-    if ($nums_bg = carbon_get_post_meta(get_the_ID(),'crb_nums_bg') ){
+    if ($nums_bg = carbon_get_theme_option('crb_nums_bg') ){
         $nums_bg_img = wp_get_attachment_image_url($nums_bg, 'full');
     }
 ?>

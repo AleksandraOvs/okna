@@ -1,6 +1,6 @@
 <section class="hero-section">
     <?php
-    if ($hero_img = carbon_get_post_meta(get_the_ID(), 'crb_hero_image')) {
+    if ($hero_img = carbon_get_theme_option('crb_hero_image')) {
         $hero_img_url = wp_get_attachment_image_url($hero_img, 'full');
 
         echo '<img src="' . $hero_img_url . '" />';
@@ -8,12 +8,12 @@
 
     echo '<div class="hero-section__inner"><div class="container">';
 
-    if ($hero_head = carbon_get_post_meta(get_the_ID(), 'crb_hero_heading')) {
+    if ($hero_head = carbon_get_theme_option('crb_hero_heading')) {
 
         echo '<h2>' . $hero_head . '</h2>';
     }
 
-    if ($hero_desc = carbon_get_post_meta(get_the_ID(), 'crb_hero_description')) {
+    if ($hero_desc = carbon_get_theme_option('crb_hero_description')) {
 
         echo '<div>' . $hero_desc . '</div>';
     }
