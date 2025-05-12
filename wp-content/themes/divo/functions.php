@@ -154,7 +154,7 @@ function divo_scripts()
 	wp_localize_script('ajax-block-loader', 'ajax_data', [
 		'url' => admin_url('admin-ajax.php')
 	]);
-	
+
 	wp_deregister_script('jquery');
 	wp_enqueue_script('theme-jquery', get_template_directory_uri() . '/js/jquery.min.js', array(), null, true);
 	wp_enqueue_script('divo-scripts', get_template_directory_uri() . '/js/script.js', array(), _S_VERSION, true);
@@ -167,14 +167,15 @@ function divo_scripts()
 	wp_enqueue_script('js-accordion-ui', 'https://code.jquery.com/ui/1.12.1/jquery-ui.js', array(), null, true);
 	wp_enqueue_script('accordion-scripts', get_stylesheet_directory_uri() . '/js/accordion.js', array(), null, true);
 
-	
-
-
 	if (is_singular() && comments_open() && get_option('thread_comments')) {
 		wp_enqueue_script('comment-reply');
 	}
 }
 add_action('wp_enqueue_scripts', 'divo_scripts');
+
+add_action('admin_enqueue_scripts', function () {
+	wp_enqueue_style('my_wp_admin', get_template_directory_uri() . '/css/admin-styles.css');
+}, 99);
 
 add_action('widgets_init', 'register_widgets');
 function register_widgets()
@@ -262,6 +263,31 @@ function ajax_load_template_block()
 		'offer',
 		'faq',
 		'feedback',
+
+		'houses-hero-block',
+		'houses-services',
+		'houses-works',
+		'houses-types',
+		'houses-catalog',
+		'houses-offer',
+		'houses-feedback',
+
+		'pldoors-hero-block',
+		'pldoors-services',
+		'pldoors-works',
+		'pldoors-types',
+		'pldoors-catalog',
+		'pldoors-offer',
+		'pldoors-feedback',
+
+		'nb-hero-block',
+		'nb-services',
+		'nb-works',
+		'nb-types',
+		'nb-catalog',
+		'nb-offer',
+		'nb-feedback',
+
 	];
 
 	if (in_array($block, $allowed_blocks)) {
@@ -269,4 +295,30 @@ function ajax_load_template_block()
 	}
 
 	wp_die();
+}
+
+
+# Прячем страницу архива автора
+if( ! is_admin() ){
+	add_filter( 'pre_handle_404', 'remove_author_pages_page' );
+	add_filter( 'author_link', 'remove_author_pages_link' );
+
+	// Ставим 404 статус
+	function remove_author_pages_page( $false ) {
+		if ( is_author() ) {
+			global $wp_query;
+			$wp_query->set_404();
+			status_header( 404 );
+			nocache_headers();
+
+			return true; // для обрыва хука
+		}
+
+		return $false;
+	}
+
+	// изменяем ссылку архива автора
+	function remove_author_pages_link( $content ) {
+		return home_url();
+	}
 }
