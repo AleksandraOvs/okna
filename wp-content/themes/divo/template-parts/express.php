@@ -1,5 +1,5 @@
 <?php
-if ($ex_photos = carbon_get_theme_option('crb_express_photos')) {
+if ($ex_photos = carbon_get_theme_option('crb_express_img')) {
 ?>
     <section class="section-express">
         <div class="container">

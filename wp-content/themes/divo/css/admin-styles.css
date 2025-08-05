@@ -1,0 +1,19 @@
+
+
+.cf-container .cf-field+.cf-field.field-heading .cf-field__body input {
+    background: transparent;
+    border-radius: 0;
+    border: none;
+    border-bottom: 1px solid #fff;
+}
+
+.cf-container .cf-field+.cf-field.field-heading .cf-field__body input {
+    color: #134cac;
+    background: transparent;
+    border-radius: 0;
+    border: none;
+    border-bottom: 1px solid #134cac;;
+    font-size: 24px;
+    width: max-content;
+}
+
